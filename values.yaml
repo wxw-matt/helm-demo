@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: wxw
-  pullPolicy: Never
+  repository: nginx
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v4"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -36,12 +36,9 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-container:
-  port: 8000
-
 service:
-  type: NodePort
-  port: 8000
+  type: ClusterIP
+  port: 80
 
 ingress:
   enabled: false
